@@ -874,6 +874,20 @@ export function setShowLiveWpm(live: boolean, nosave?: boolean): boolean {
   return true;
 }
 
+export function setShowLiveWpmRolling(
+  live: boolean,
+  nosave?: boolean
+): boolean {
+  if (!isConfigValueValid("show live rolling speed", live, ["boolean"]))
+    return false;
+
+  config.showLiveWpmRolling = live;
+  saveToLocalStorage("showLiveWpmRolling", nosave);
+  ConfigEvent.dispatch("showLiveWpmRolling", config.showLiveWpmRolling);
+
+  return true;
+}
+
 export function setShowLiveAcc(live: boolean, nosave?: boolean): boolean {
   if (!isConfigValueValid("show live acc", live, ["boolean"])) return false;
 
@@ -1892,6 +1906,7 @@ export function apply(
     setSmoothCaret(configObj.smoothCaret, true);
     setSmoothLineScroll(configObj.smoothLineScroll, true);
     setShowLiveWpm(configObj.showLiveWpm, true);
+    setShowLiveWpmRolling(configObj.showLiveWpmRolling, true);
     setShowLiveAcc(configObj.showLiveAcc, true);
     setShowLiveBurst(configObj.showLiveBurst, true);
     setShowTimerProgress(configObj.showTimerProgress, true);

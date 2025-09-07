@@ -10,6 +10,7 @@ import SmoothCaretCommands from "./lists/smooth-caret";
 import QuickRestartCommands from "./lists/quick-restart";
 import RepeatQuotesCommands from "./lists/repeat-quotes";
 import LiveWpmCommands from "./lists/live-wpm";
+import LiveWpmRollingCommands from "./lists/live-wpm-rolling";
 import LiveAccCommands from "./lists/live-acc";
 import LiveBurstCommands from "./lists/live-burst";
 import ShowAverageCommands from "./lists/show-average";
@@ -322,6 +323,7 @@ export const commands: MonkeyTypes.CommandsSubgroup = {
 
     //showhide elements
     ...LiveWpmCommands,
+    ...LiveWpmRollingCommands,
     ...LiveAccCommands,
     ...LiveBurstCommands,
     ...ShowTimerCommands,

@@ -56,15 +56,15 @@ function updateTimer(): void {
 
 function calculateWpmRaw(): MonkeyTypes.WpmAndRaw {
   if (timerDebug) console.time("calculate wpm and raw");
-  const wpmAndRaw = TestStats.calculateWpmAndRaw();
+  const wpmAndRaw = TestStats.calculateWpmAndRaw(true);
   if (timerDebug) console.timeEnd("calculate wpm and raw");
-  if (timerDebug) console.time("update live wpm");
-  LiveWpm.update(wpmAndRaw.wpm, wpmAndRaw.raw);
-  if (timerDebug) console.timeEnd("update live wpm");
   if (timerDebug) console.time("push to history");
   TestInput.pushToWpmHistory(wpmAndRaw.wpm);
   TestInput.pushToRawHistory(wpmAndRaw.raw);
   if (timerDebug) console.timeEnd("push to history");
+  if (timerDebug) console.time("update live wpm");
+  LiveWpm.update(wpmAndRaw.wpm, wpmAndRaw.raw);
+  if (timerDebug) console.timeEnd("update live wpm");
   return wpmAndRaw;
 }
 
